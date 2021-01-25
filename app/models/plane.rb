@@ -2,6 +2,9 @@ class Plane < ApplicationRecord
   include GenericCodes
 
   belongs_to :airline
+  has_many :airlines, through: :plane_models
+  has_many :schedules
+
   enum status: [:ARRIVED, :DEPARTURED, :CANCELLED]
 
   before_create :set_code
